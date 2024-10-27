@@ -26,9 +26,9 @@ h1 {
 }
 
 #current-word {
-    font-size: 2rem;
+    font-size: 24px; /* Ensure this matches the input field size */
+    margin-top: 80px; /* Adds space below the scoreboard */
     font-weight: bold;
-    margin: 20px 0;
     padding: 10px;
     border: 2px solid #4a90e2;
     border-radius: 8px;
@@ -91,4 +91,34 @@ button:hover {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+#scoreboard {
+    position: fixed; /* Fixes the position at the top */
+    top: 10px; /* Adjusts the distance from the top */
+    left: 10px; /* Adjusts the distance from the left */
+    background-color: #f8f9fa; /* Light background for visibility */
+    padding: 10px; /* Padding for aesthetics */
+    border: 1px solid #ccc; /* Optional border */
+    z-index: 1000; /* Ensures it stays above other elements */
+    width: auto; /* Adjusts width to fit content */
+    max-width: 300px; /* Optional: Set a maximum width */
+}
+
+#current-word, #messages, #turn-count, #word-list {
+    margin-top: 60px; /* Adds space below the scoreboard */
+}
+
+#input-container {
+    margin-top: 10px; /* Space above the input container */
+}
+
+#input-container input {
+    margin-right: 10px; /* Space between the input field and the submit button */
+}
+
+#user-input {
+    font-size: 24px; /* Adjust this value to match the font size of the current word */
+    padding: 5px; /* Optional: Add some padding for better aesthetics */
+    width: 200px; /* Optional: Set a width for the input field */
 }

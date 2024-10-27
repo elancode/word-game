@@ -8,9 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const messagesElement = document.getElementById('messages');
     const turnCountElement = document.getElementById('turn-count');
     const wordListElement = document.getElementById('word-list');
+    const userScoreElement = document.getElementById('user-score'); // Element to display user score
+    const computerScoreElement = document.getElementById('computer-score'); // Element to display computer score
 
     let turnCount = 0;
     let wordsPlayed = [];
+    let userScore = 0; // Initialize user score
+    let computerScore = 0; // Initialize computer score
 
     // Function to fetch a random 4-character word from the Random Word API
     const fetchRandomWord = () => {
@@ -109,6 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     return; // Exit the function
                 }
 
+                // Update score based on the type of move
+                if (userInput.length === currentWordElement.textContent.length + 1) {
+                    userScore += 5; // Adding a letter
+                } else if (userInput.length === currentWordElement.textContent.length) {
+                    userScore += 2; // Replacing a letter
+                }
+
                 turnCount++;
                 currentWordElement.textContent = userInput;
                 turnCountElement.textContent = turnCount;
@@ -116,6 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateWordList();
                 messagesElement.textContent = 'Word submitted successfully!';
                 userInputElement.value = ''; // Clear input field
+
+                // Update user score display
+                userScoreElement.textContent = `User Score: ${userScore}`;
 
                 // Generate computer's turn using the API
                 generateComputerTurn(userInput);
@@ -147,12 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
             // Validate computer's word
             isValidWord(computerWord).then(valid => {
                 if (valid && isValidMove(currentWord, computerWord)) {
+                    // Update score based on the type of move
+                    if (computerWord.length === currentWord.length + 1) {
+                        computerScore += 5; // Adding a letter
+                    } else if (computerWord.length === currentWord.length) {
+                        computerScore += 2; // Replacing a letter
+                    }
+
                     turnCount++;
                     currentWordElement.textContent = computerWord;
                     turnCountElement.textContent = turnCount;
                     wordsPlayed.push(computerWord);
                     updateWordList();
                     messagesElement.textContent = 'Computer submitted: ' + computerWord;
+
+                    // Update computer score display
+                    computerScoreElement.textContent = `Computer Score: ${computerScore}`;
                 } else {
                     // If the computer's word is invalid, generate a new word
                     console.log('Invalid computer word, generating a new one...');
@@ -180,7 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartGame = () => {
         turnCount = 0;
         wordsPlayed = [];
+        userScore = 0; // Reset user score
+        computerScore = 0; // Reset computer score
         messagesElement.textContent = 'Game restarted!';
+        userScoreElement.textContent = `User Score: ${userScore}`; // Reset user score display
+        computerScoreElement.textContent = `Computer Score: ${computerScore}`; // Reset computer score display
         fetchRandomWord(); // Fetch a new random word when restarting
     };
 

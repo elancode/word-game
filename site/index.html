@@ -9,12 +9,19 @@
 </head>
 <body>
     <h1>Word Game</h1>
-    <div id="current-word"></div>
-    <input type="text" id="user-input" placeholder="Enter a word" />
-    <button id="submit-word">Submit Word</button>
-    <button id="restart-game">Restart Game</button>
+    <div id="scoreboard">
+        <div id="user-score">User Score: 0</div>
+        <div id="computer-score">Computer Score: 0</div>
+        <button id="restart-game">Restart Game</button>
+    </div>
+    <div id="current-word">Current Word: </div>
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Enter your word" />
+        <button id="submit-word">Submit Word</button>
+    </div>
+
     <div id="messages"></div>
-    <div id="turn-count">Turn Count: <span id="turn-count-value">0</span></div>
+    <div id="turn-count">Turn Count: 0</div>
     <ul id="word-list"></ul>
 </body>
 </html>
