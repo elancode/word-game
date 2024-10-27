@@ -51,7 +51,7 @@ def generate_word():
             completion = client.chat.completions.create(
                 model="o1-preview",  
                 messages=[{"role": "user", "content": prompt}],l
-                max_tokens=10,
+                max_tokens=100,
                 temperature=0.5,
             )
 
