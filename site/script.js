@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWordList();
     };
 
-    // Function to validate if a word is an English word using the Datamuse API
+    // Function to validate if a word is an English word using the Dictionary API
     const isValidWord = (word) => {
         // Check if the word contains only letters a-z
         const regex = /^[a-z]+$/; // Only allow lowercase letters a-z
@@ -46,15 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return Promise.resolve(false); // Immediately return false if invalid
         }
 
-        return fetch(`https://api.datamuse.com/words?sp=${word}&max=1`)
+        return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    return false; // If the response is not ok, the word is not valid
                 }
-                return response.json();
-            })
-            .then(data => {
-                return data.length > 0; // If the response has any words, it's valid
+                return response.json().then(data => {
+                    return data.length > 0; // If the response has any entries, it's valid
+                });
             })
             .catch(error => {
                 messagesElement.textContent = 'Error validating word: ' + error.message;
@@ -156,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     messagesElement.textContent = 'Computer submitted: ' + computerWord;
                 } else {
                     // If the computer's word is invalid, generate a new word
+                    console.log('Invalid computer word, generating a new one...');
                     generateComputerTurn(currentWord); // Recursively call to generate a new word
                 }
             });
@@ -168,10 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to update the word list display
     const updateWordList = () => {
         wordListElement.innerHTML = ''; // Clear existing list
+        // Prepend new words to the list
         wordsPlayed.forEach(word => {
             const listItem = document.createElement('li');
             listItem.textContent = word;
-            wordListElement.appendChild(listItem);
+            wordListElement.prepend(listItem); // Add new words to the top
         });
     };
 

@@ -52,7 +52,7 @@ def generate_word():
                 model="gpt-4o",  
                 messages=[{"role": "user", "content": prompt}],l
                 max_tokens=10,
-                temperature=0.1,
+                temperature=0.5,
             )
 
             #new_word = completion.choices[0].message['content'].strip()
