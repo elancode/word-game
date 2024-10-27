@@ -29,7 +29,7 @@ def generate_word():
         try:
             # Use the gpt4o-mini model
             completion = client.chat.completions.create(
-                model="gpt-4o-mini",  
+                model="gpt-4o",  
                 messages=[{"role": "user", "content": prompt}],l
                 max_tokens=10,
                 temperature=0.7,
