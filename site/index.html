@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Word Game</h1>
+        <div id="game-board">
+            <p>Current Word: <span id="current-word"></span></p>
+            <input type="text" id="user-input" placeholder="Enter a new word">
+            <button id="submit-word">Submit</button>
+            <button id="restart-game">Restart</button>
+            <div id="messages"></div>
+            <p>Turns: <span id="turn-count">0</span></p>
+            <p>Words Played:</p>
+            <ul id="word-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
