@@ -1,0 +1,94 @@
+/* site/style.css */
+
+/* Basic reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #4a90e2; /* Modern blue color */
+}
+
+#current-word {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#messages {
+    margin: 10px 0;
+    color: #d9534f; /* Bootstrap danger color */
+    font-weight: bold;
+}
+
+#turn-count {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+#word-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px; /* Limit width for better layout */
+}
+
+#word-list li {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#word-list li:hover {
+    background-color: #e6f7ff; /* Light blue on hover */
+}
+
+button {
+    background-color: #4a90e2; /* Modern blue color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #357ab8; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

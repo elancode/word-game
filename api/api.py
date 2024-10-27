@@ -24,13 +24,13 @@ def generate_word():
         if not current_word:
             return jsonify({'error': 'Current word is required'}), 400
 
-        prompt = f'Generate a valid English word by changing or adding one letter to the word "{current_word}". Only provide the new word, nothing else.'
+        prompt = f'Generate a valid English word by changing or adding one letter to the word "{current_word}". Only provide the new word, nothing else. Make sure it is a valid English word, using the letters a-z only with no numbers or punctuation. Please validate that the new word has only either one additional letter, or one existing letter modified.'
 
         try:
             # Use the gpt4o-mini model
             completion = client.chat.completions.create(
                 model="gpt-4o-mini",  
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt}],l
                 max_tokens=10,
                 temperature=0.7,
             )
