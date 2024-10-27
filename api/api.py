@@ -24,7 +24,9 @@ def generate_word():
         if not current_word:
             return jsonify({'error': 'Current word is required'}), 400
 
-        prompt = f'Generate a valid English word by changing or adding one letter to the word "{current_word}". Only provide the new word, nothing else. Make sure it is a valid English word, using the letters a-z only with no numbers or punctuation. Please validate that the new word has only either one additional letter, or one existing letter modified.'
+        #prompt = f'Generate a valid English word by changing or adding one letter to the word "{current_word}". Only provide the new word, nothing else. Make sure it is a valid English word, using the letters a-z only with no numbers or punctuation. Please validate that the new word has only either one additional letter, or one existing letter modified.'
+
+        prompt = f'Generate a valid English word by doing only one of the following changes to the word "{current_word}": (a) changing one existing letter,  or (b) adding one letter to the word. Only provide the new word, nothing else. Only use the letters a-z only with no numbers or punctuation.  Validate that it is a valid English word.  If you cannot find a new word then please return 0.'
 
         try:
             # Use the gpt4o-mini model
